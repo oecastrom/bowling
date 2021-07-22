@@ -11,3 +11,8 @@
 * If you got a Spare in the 10th frame: You need to throw 1 additional time to complete the Spare.
 * If you got a Strike in the 10th frame: You need to throw 2 more times to calculate the score for that Strike.
 
+### To Do
+* 
+
+### How to Run
+*

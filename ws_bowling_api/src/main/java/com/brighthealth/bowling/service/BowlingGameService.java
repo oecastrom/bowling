@@ -11,7 +11,6 @@ public class BowlingGameService implements BowlingGameInterface {
     private int roll = 0;
     private int[] rolls = new int[MAX_ROLL_COUNT];
 
-    // Call this method in the controller
     public void roll(int ...rolls) {
         for (int pinsDown : rolls)
             roll(pinsDown);
@@ -24,28 +23,20 @@ public class BowlingGameService implements BowlingGameInterface {
 
     @Override
     public int score() {
-        // separate counter to keep track where we are in the rolls array
         int cursor = 0;
         int score = 0;
-
         for (int frame = 0;  frame < MAX_FRAME; frame++) {
-            // check if spare
             if (isSpare(cursor)) {
-                // Refer to read me for this equation
                 score += 10 + rolls[cursor + 2] ;
                 cursor += 2;
             } else if (isStrike(cursor)) {
-                // Refer to read me for this equation
                 score += 10 + rolls[cursor + 1] + rolls[cursor + 2];
                 cursor++;
             } else {
-                // 2 rolls per frame
                 score += rolls[cursor] + rolls[cursor + 1];
-                // Don't increase by 1 but by 2 since in line 24 we have accounted for the 2 rolls per frame
                 cursor += 2;
             }
         }
-
         return score;
     }
 
@@ -56,5 +47,4 @@ public class BowlingGameService implements BowlingGameInterface {
     private boolean isStrike(int cursor) {
         return rolls[cursor] == 10;
     }
-
 }
